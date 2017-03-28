@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<questions>
+  <question minutes="2">
+    <text>Сколько бит в байте?</text>
+    <variants>
+      <variant>1</variant>
+      <variant>16</variant>
+      <variant>4</variant>
+      <variant right="true">8</variant>
+    </variants>
+  </question>
+  <question minutes="3">
+    <text>Что потерял Вирт?</text>
+    <variants>
+      <variant>руку</variant>
+      <variant>кошелек</variant>
+      <variant>голову</variant>
+      <variant right="true">ногу</variant>
+    </variants>
+  </question>
+  <question minutes="2">
+    <text>Сколько у Марио братьев?</text>
+    <variants>
+      <variant>1</variant>
+      <variant>0</variant>
+      <variant>7</variant>
+      <variant right="true">1</variant>
+    </variants>
+  </question>
+</questions>
