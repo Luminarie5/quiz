@@ -1,3 +1,7 @@
+# name: Quiz
+# author: Shubin_Pavlik
+# version: 0.1
+#
 # ruby_version: 2.3.3
 # encoding: utf-8
 require_relative './lib/quiz'
