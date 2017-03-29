@@ -14,9 +14,9 @@ class Quiz
     tasks = doc.root.elements.collect('question') do |question|
       hash[:min] = question.attributes['minutes']
       hash[:text] = question.text('text')
-      hash[:variants] = question.elements.collect('variants/variant') do |variant|
-        hash[:right_answer] = variant.text if variant.attributes['right']
-        variant.text
+      hash[:variants] = question.elements.collect('variants/variant') do |var|
+        hash[:right_answer] = var.text if var.attributes['right']
+        var.text
       end
       Task.new(hash)
     end
@@ -26,7 +26,7 @@ class Quiz
   def start
     @tasks.each do |task|
       task.ask
-      @right_answers += task.take_answer
+      @right_answers += task.check(task.answer)
     end
   end
 end

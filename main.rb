@@ -6,7 +6,6 @@
 # encoding: utf-8
 require_relative './lib/quiz'
 require_relative './lib/task.rb'
-require_relative './lib/clock'
 require 'rexml/document'
 
 current_path = File.dirname(__FILE__)

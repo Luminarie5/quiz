@@ -5,27 +5,37 @@ class Task
 
   def initialize(hash)
     @variants = hash[:variants]
-    @min = hash[:min]
+    @min = hash[:min].to_i
     @text = hash[:text]
     @right_answer = hash[:right_answer]
-    @clock = Clock.new(@min)
   end
 
   def ask
     puts text
-    @variants.each_with_index { |variant, index| puts "#{index + 1}. #{variant}" }
+    @variants.each_with_index { |var, i| puts "#{i + 1}. #{var}" }
+    @time = Time.now
   end
 
-  def take_answer
-    Thread.new { @clock.start }
-    answer = STDIN.gets.chomp.encode('utf-8')
-    @clock.on = true
+  def answer
+    answer_index = 0
+    loop do
+      puts 'Для ответа используйте цифры от 1 до 4'
+      answer_index = STDIN.gets.to_i
+      if (1..4).cover?(answer_index)
+        break
+      end
+    end
+    answer_index
+  end
 
-    if right_answer == answer
+  def check(answer_index)
+    abort('Слишком долго думайте!!!') if (Time.now - @time) > min * 60
+    right_answer_index = @variants.index(@right_answer) + 1
+    if answer_index == right_answer_index
       puts "В яблочко! Вы ответили верно.\n\n"
       1
     else
-      puts "Неверно! А правильно было так: #{right_answer}\n\n"
+      puts "Неверно! А правильно было так: #{@right_answer}\n\n"
       0
     end
   end
